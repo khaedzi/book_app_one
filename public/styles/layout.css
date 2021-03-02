@@ -24,3 +24,36 @@ header>nav{
     text-decoration: none;
     width:5em;
 }
+#byclick{
+display: inline;
+float:right;
+}
+#delete{
+    display: inline;
+    float: left;
+}
+
+  #disypl{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  
+    
+}  
+
+#myupdateBu{
+    width: 100%;
+    height: 20%;
+    background-color: green;
+    cursor: pointer;
+}
+input{
+    border: 2px solid black;
+    margin-bottom: 2px;
+    width: 100%;
+    height: 35px;
+}
+#myForm{
+
+}

@@ -9,26 +9,34 @@ const app = express();
 
 // { connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } }
 // process.env.databaseUrl
-let client =new pg.Client({ connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } });
+let client =new pg.Client(process.env.databaseUrl);
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
 const baseAPIUrl = 'https://www.googleapis.com/books/v1/volumes';
-
-
+const methodOverRide=require('method-override');
+app.use(methodOverRide('_method'))
 app.get("/",handleHome)
 
 
 app.get('/searches/new', handleSearches)
 
 app.post('/searches', handleSearch)
-
+app.delete("/deleteData/:id",deltepage)
 
 app.get("/books/:id", handleBook)
 app.post("/books", handleSelectedBook)
+app.put("/updateData/:id",handleupdateTask)
 
+function deltepage(req,res){
+    let myDataDelete='Delete from favourite WHERE id=$1;'
+    let mykey=[req.query.id];
+    client.query(myDataDelete,mykey).then(()=>{
+res.redirect("/")
 
+    })
+}
 function Book(img_url, title, author_name, description, isbn){
     this.img_url = img_url;
     this.title = title;
@@ -37,6 +45,17 @@ function Book(img_url, title, author_name, description, isbn){
     this.isbn = isbn;
 }
 
+
+function handleupdateTask(req,res){
+    let formData = req.body;
+    console.log(formData);
+    let safeValues = [formData.title, formData.description, formData.author, formData.isbn,req.params.id];
+   let mydata=`UPDATE favourite SET title=$1,description=$2,author=$3,isbn=$4 WHERE id=$5;`
+    client.query(mydata,safeValues).then(()=>{
+
+        res.redirect(`/books/${req.params.id}`)
+    })
+}
 function handleSearches(req, res){
     res.render('pages/searches/new');
 }
