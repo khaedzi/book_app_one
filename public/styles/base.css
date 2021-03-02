@@ -1,0 +1,35 @@
+html{
+    height: 100%;
+}
+body{
+    height:100%;
+}
+h1{
+    font-size:5em;
+    text-align: center;
+}
+h3{
+    font-size:1.5em;
+    font-weight:bold;
+}
+h4{
+    font-size:1em;
+}
+
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    color:white;
+    height:7vh;
+    background-color: black;
+}
+#mainSearch{
+    
+    height:93vh;
+}
+main{
+    background: #9b9b9b;
+    position: relative;
+    height:100%;
+}
