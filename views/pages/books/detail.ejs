@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+    <main>
+        <h3 id = "detailHeader">Book</h3>
+        <section class = "display-books">
+            <img src="<%= book.image_url %>" alt="">
+            <h3><%= book.title %> </h3>
+            <h4><%= book.authorName %> </h4>
+            <p><%= book.description %> </p>
+            <p>ISBN: <%= book.isbn %></p>
+            <a class = "style-button" href="/">Return</a>
+        </section>
+    </main>
+<%- include('../partials/footer.ejs') %>

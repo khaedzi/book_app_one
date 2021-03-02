@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <p>Best Books!</p>
+            <div class = "hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class = "main-header">
+            <p>Search Results</p>
+        </div>
+        <% books.forEach(book => { %>
+            <section class = "display-books">
+                <img src="<%= book.img_url %>" alt="">
+                <h3><%= book.title %> </h3>
+                <h4><%= book.authorName %> </h4>
+                <p><%= book.description %> </p>
+                <form action="/books" method="POST">
+                    <% Object.keys(book).forEach(key => { %>
+                        <input id = "selectBook" type="text" name = "<%= key %>" value = "<%= book[key] %>">
+                    <% }) %>
+                    <button>Add Book</button>
+                </form>
+            </section>
+        <% }) %>
+    </main>
+</body>
+</html>

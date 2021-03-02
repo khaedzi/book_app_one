@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <h3 style = "text-align: center;">Collections (<%= length %>) </h3>
+        <% data.forEach(book => { %>
+            <section class = "display-books">
+                <img src="<%= book.image_url %>" alt="">
+                <h3><%= book.title %> </h3>
+                <h4><%= book.authorName %> </h4>
+                <a class = "style-button" id = "showBook" href="/books/<%= book.id %>">Details</a>
+            </section>
+        <% }) %>
+    </main>
+<%- include('./partials/footer.ejs') %>
