@@ -9,7 +9,7 @@ const app = express();
 
 // { connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } }
 // process.env.databaseUrl
-// let client =new pg.Client({ connectionString: process.env.databaseUrl,   ssl: { rejectUnauthorized: false } });
+// let client =new pg.Client(process.env.databaseUrl);
 
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 app.use(express.static('public'))
