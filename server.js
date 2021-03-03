@@ -9,26 +9,26 @@ const app = express();
 
 // { connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } }
 // process.env.databaseUrl
-let client =new pg.Client({ connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } });
+// let client =new pg.Client({ connectionString: process.env.databaseUrl,   ssl: { rejectUnauthorized: false } });
+
+const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
 const baseAPIUrl = 'https://www.googleapis.com/books/v1/volumes';
-<<<<<<< HEAD
+
 const methodOverRide=require('method-override');
 app.use(methodOverRide('_method'))
-=======
 
 
->>>>>>> b5e84d8ee483630f2ca8768e86d10ba46f696ade
 app.get("/",handleHome)
 
 
 app.get('/searches/new', handleSearches)
 
 app.post('/searches', handleSearch)
-<<<<<<< HEAD
+
 app.delete("/deleteData/:id",deltepage)
 
 app.get("/books/:id", handleBook)
@@ -43,14 +43,14 @@ res.redirect("/")
 
     })
 }
-=======
+
 
 
 app.get("/books/:id", handleBook)
 app.post("/books", handleSelectedBook)
 
 
->>>>>>> b5e84d8ee483630f2ca8768e86d10ba46f696ade
+
 function Book(img_url, title, author_name, description, isbn){
     this.img_url = img_url;
     this.title = title;
@@ -59,7 +59,7 @@ function Book(img_url, title, author_name, description, isbn){
     this.isbn = isbn;
 }
 
-<<<<<<< HEAD
+
 
 function handleupdateTask(req,res){
     let formData = req.body;
@@ -71,8 +71,7 @@ function handleupdateTask(req,res){
         res.redirect(`/books/${req.params.id}`)
     })
 }
-=======
->>>>>>> b5e84d8ee483630f2ca8768e86d10ba46f696ade
+
 function handleSearches(req, res){
     res.render('pages/searches/new');
 }
